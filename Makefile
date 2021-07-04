@@ -6,7 +6,7 @@ start:
 	docker-compose up
 stop:
 	docker-compose down
-migration:
+migrations:
 	docker-compose run --rm app sh -c "python manage.py makemigrations"
 migrate:
 	docker-compose run --rm app sh -c "python manage.py migrate"
@@ -16,8 +16,7 @@ test:
 	docker-compose run --rm app sh -c "python manage.py test"
 admin:
 	docker-compose run --rm app sh -c "python manage.py createsuperuser"
-
-app:
-	docker-compose run app sh -c "python manage.py startapp core"
+coreapp:
+	docker-compose run --rm app sh -c "python manage.py startapp core"
 reset:
 	rm app/core/migrations/*00*
